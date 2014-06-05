@@ -1,0 +1,44 @@
+{
+  "name": "express-initializers",
+  "version": "0.0.1",
+  "description": "An Express App initializer pattern to tame large apps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/jshint/bin/jshint index.js lib/*.js test/*.js && node_modules/mocha/bin/mocha -R spec -r should",
+    "coverage": "node_modules/jshint/bin/jshint lib/*.js test/*.js test/fixtures/*.js && node_modules/mocha/bin/mocha -r blanket -R html-cov > coverage.html && open coverage.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgable/express-initializers.git"
+  },
+  "keywords": [
+    "express",
+    "initialize",
+    "configure"
+  ],
+  "author": "Jacob Gable <jacob.gable@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgable/express-initializers/issues"
+  },
+  "homepage": "https://github.com/jgable/express-initializers",
+  "dependencies": {
+    "bluebird": "^2.0.2",
+    "caller": "0.0.1",
+    "glob": "^4.0.2",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "blanket": "^1.1.6",
+    "jshint": "^2.5.1",
+    "mocha": "^1.20.1",
+    "should": "^4.0.1",
+    "sinon": "^1.10.2"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "lib",
+      "data-cover-never": "node_modules"
+    }
+  }
+}
