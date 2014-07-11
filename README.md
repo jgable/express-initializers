@@ -34,7 +34,7 @@ var hbs = exphbs.create({
     }
 });
 app.engine('.stache', hbs.engine);
-rname, 'views'));
+app.set('views', path.join(__dirname, '..', 'views'));
 app.set('view engine', '.stache');
 
 /* etc. */
