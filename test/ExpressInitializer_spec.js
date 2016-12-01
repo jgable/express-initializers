@@ -2,9 +2,13 @@
 var path = require('path'),
     /*jshint -W079 */
     should = require('should'),
-    sinon = require('sinon');
+    sinon = require('sinon'),
+    bluebird = require('bluebird');
 
-var ExpressInitializer = require('../lib/ExpressInitializer');
+/*jshint -W079 */
+global.Promise = bluebird;
+
+var ExpressInitializer = require('../src/lib/ExpressInitializer').default;
 
 describe('ExpressInitializer', function () {
     var fixturePath = path.join(__dirname, 'fixtures'),

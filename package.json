@@ -2,10 +2,15 @@
   "name": "express-initializers",
   "version": "0.0.1",
   "description": "An Express App initializer pattern to tame large apps.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
-    "test": "node_modules/jshint/bin/jshint index.js lib/*.js test/*.js && node_modules/mocha/bin/mocha -R spec -r should",
-    "coverage": "node_modules/jshint/bin/jshint lib/*.js test/*.js test/fixtures/*.js && node_modules/mocha/bin/mocha -r blanket -R html-cov > coverage.html && open coverage.html"
+    "build": "babel src -d dist",
+    "lint": "jshint src/index.js src/lib/*.js test/*.js",
+    "test": "mocha --compilers js:babel-core/register -R spec -r should",
+    "pretest": "npm run lint",
+    "coverage": "mocha -r blanket -R html-cov > coverage.html && open coverage.html",
+    "precoverage": "jshint lib/*.js test/*.js test/fixtures/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,21 +28,32 @@
   },
   "homepage": "https://github.com/jgable/express-initializers",
   "dependencies": {
-    "bluebird": "^2.0.2",
-    "caller": "0.0.1",
-    "glob": "^4.0.2",
-    "lodash": "^2.4.1"
+    "bluebird": "^3.4.6",
+    "caller": "^1.0.1",
+    "glob": "^7.1.1",
+    "lodash": "^4.17.2"
   },
   "devDependencies": {
-    "blanket": "^1.1.6",
-    "jshint": "^2.5.1",
-    "mocha": "^1.20.1",
-    "should": "^4.0.1",
-    "sinon": "^1.10.2"
+    "babel-core": "^6.18.2",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-preset-es2015-node": "^6.1.1",
+    "blanket": "^1.2.3",
+    "jshint": "^2.9.4",
+    "mocha": "^3.2.0",
+    "should": "^11.1.1",
+    "sinon": "^1.17.6"
+  },
+  "babel": {
+    "presets": [
+      "es2015-node"
+    ],
+    "plugins": [
+      "transform-async-to-generator"
+    ]
   },
   "config": {
     "blanket": {
-      "pattern": "lib",
+      "pattern": "dist/lib",
       "data-cover-never": "node_modules"
     }
   }

@@ -3,7 +3,7 @@ module.exports = {
     name: 'four',
     after: 'three',
 
-    configure: function (app) {
+    async configure(app) {
         app.set('four', 4);
     }
 };

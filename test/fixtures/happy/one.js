@@ -2,7 +2,7 @@
 module.exports = {
     name: 'one',
 
-    configure: function (app) {
+    async configure(app) {
         app.set('one', 1);
     }
 };
