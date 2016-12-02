@@ -1,6 +1,6 @@
 
 module.exports = {
-    configure: function (app) {
+    async configure(app) {
         app.set('unnamed', 0);
     }
 };

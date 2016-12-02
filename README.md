@@ -154,7 +154,7 @@ A more thorough implementation can be seen at [node-site](https://github.com/jga
 
 ### Configuration
 
-The `initializers` function returned from `require('express-initializers')` can accept options as the second parameter, and an optional callback as the third parameter (if you really hate promises).
+The `initializers` function returned from `require('express-initializers')` can accept options as the second parameter, ~~and an optional callback as the third parameter (if you really hate promises).~~
 
 ```js
 initialize(app, {
